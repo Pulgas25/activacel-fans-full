@@ -11,16 +11,18 @@ const io = new Server(server, {
   }
 });
 
-// Ruta a archivos estáticos
-const publicPath = path.join(__dirname, 'public');
+// === ARCHIVOS ESTÁTICOS ===
+// Como tus archivos (index.html, room.html, styles.css, client.js)
+// están en la raíz del proyecto, usamos __dirname directamente.
+const publicPath = __dirname;
 app.use(express.static(publicPath));
 
-// Ruta principal
+// Ruta principal: sirve index.html
 app.get('/', (req, res) => {
   res.sendFile(path.join(publicPath, 'index.html'));
 });
 
-// Lógica de señalización WebRTC
+// === LÓGICA DE SEÑALIZACIÓN WEBRTC CON SOCKET.IO ===
 io.on('connection', (socket) => {
   console.log('Nuevo cliente conectado', socket.id);
 
