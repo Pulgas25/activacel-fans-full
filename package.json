@@ -1,0 +1,13 @@
+{
+  "name": "activacel-fans-full",
+  "version": "1.0.0",
+  "description": "Videochat Activacel Fans con Node, Express, Socket.IO y WebRTC",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "socket.io": "^4.7.5"
+  }
+}

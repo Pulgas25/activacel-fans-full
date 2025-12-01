@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Activacel Fans - Videochat</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Activacel Fans</h1>
+    <p class="subtitle">Sala privada de videollamada entre Creador y Fan</p>
+
+    <form id="room-form">
+      <label for="roomId">ID de sala</label>
+      <input id="roomId" name="roomId" placeholder="ej: activacel123" required />
+
+      <label for="role">Rol</label>
+      <select id="role" name="role">
+        <option value="creator">Creador</option>
+        <option value="fan">Fan</option>
+      </select>
+
+      <button type="submit">Entrar a la sala</button>
+    </form>
+
+    <p class="hint">
+      Comparte el mismo ID de sala con la otra persona para conectar la videollamada.
+    </p>
+  </div>
+
+  <script>
+    const form = document.getElementById('room-form');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const roomId = document.getElementById('roomId').value.trim();
+      const role = document.getElementById('role').value;
+      if (!roomId) return;
+      const url = `/room.html?roomId=${encodeURIComponent(roomId)}&role=${encodeURIComponent(role)}`;
+      window.location.href = url;
+    });
+  </script>
+</body>
+</html>
